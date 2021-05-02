@@ -1,0 +1,3 @@
+include ':dynalibs'
+include ':app'
+rootProject.name = "dynalibsapp"
