@@ -1,34 +1,89 @@
 {
+  "globals": {
+    "statusBarColor": "#fcba03"
+  },
   "children": [
     {
-      "type": "LinearLayout",
-      "id": "l",
+      "type": "RelativeLayout",
+      "id": "rl_root",
       "attributes": {
-        "layout_width": "200dp",
-        "layout_height": "200dp",
-        "background": "green",
-        "rightToRight": "parent",
-        "leftToLeft": "parent",
-        "bottomToBottom": "parent",
-        "topToTop": "parent"
+        "layout_width": "match_parent",
+        "layout_height": "match_parent",
+        "background": "white"
       },
       "children": [
         {
-          "type": "TextView",
-          "id": "v",
+          "type": "RelativeLayout",
+          "id": "rl_head",
           "attributes": {
-            "layout_width": "wrap_content",
-            "layout_height": "100dp",
-            "background": "red",
-            "layout_gravity": "center",
-            "padding": "20dp",
-            "gravity": "center",
-            "textColor": "white",
-            "textContent": {
-              "textContentType": "text",
-              "text": "Hello World"
+            "layout_width": "match_parent",
+            "layout_height": "70dp",
+            "background": "#f5b400"
+          },
+          "children": [
+            {
+              "type": "ImageView",
+              "id": "iv_back",
+              "attributes": {
+                "layout_width": "30dp",
+                "layout_height": "30dp",
+                "layout_centerVertical": true,
+                "layout_marginLeft": "15dp",
+                "srcUrl": "https://firebasestorage.googleapis.com/v0/b/coderusk.appspot.com/o/dashboard%2Fleft-arrow.png?alt=media&token=8fd27ea9-3c32-4290-b3e5-baa2713d2d74"
+              }
+            },
+            {
+              "type": "TextView",
+              "id": "tv_head",
+              "attributes": {
+                "layout_centerVertical": true,
+                "layout_width": "wrap_content",
+                "layout_height": "wrap_content",
+                "textColor": "white",
+                "layout_toRightOf": "iv_back",
+                "textSize": "30",
+                "layout_marginLeft": "20dp",
+                "textContent": {
+                  "textContentType": "text",
+                  "text": "Header"
+                }
+              }
             }
-          }
+          ]
+        },
+        {
+          "type": "RelativeLayout",
+          "id": "rl_content",
+          "attributes": {
+            "layout_width": "match_parent",
+            "layout_height": "match_parent",
+            "layout_below": "rl_head"
+          },
+          "children": [
+            {
+              "type": "CardView",
+              "id": "cv_image",
+              "attributes": {
+                "layout_width": "match_parent",
+                "layout_height": "200dp",
+                "layout_margin": "10dp",
+                "radius": "5dp",
+                "cardBackgroundColor": "white"
+              },
+              "children": [
+                {
+                  "type": "ImageView",
+                  "id": "iv_image",
+                  "attributes": {
+                    "layout_width": "match_parent",
+                    "layout_height": "match_parent",
+                    "srcUrl": "https://picsum.photos/id/1084/536/354?grayscale",
+                    "imageScaleType": "center_crop"
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

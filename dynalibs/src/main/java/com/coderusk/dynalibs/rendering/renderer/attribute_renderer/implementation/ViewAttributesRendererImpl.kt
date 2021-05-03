@@ -2,7 +2,7 @@ package com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementati
 
 import android.view.View
 import com.coderusk.dynalibs.*
-import com.coderusk.dynalibs.rendering.*
+import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.ViewAttributesRenderer
 import org.json.JSONArray
@@ -112,13 +112,6 @@ object ViewAttributesRendererImpl: ViewAttributesRenderer {
         }
         attributes.BPR(F.isHapticFeedbackEnabled){
             view.isHapticFeedbackEnabled = it as Boolean
-        }
-        attributes.SPR(F.id){
-            var id = renderer.getId(it as String)
-            if(id!=0)
-            {
-                view.id = id
-            }
         }
         attributes.SPR(F.importantForAccessibility){
             view.importantForAccessibility = renderer.factory.importantForAccessibilityParser.parser(it as String)

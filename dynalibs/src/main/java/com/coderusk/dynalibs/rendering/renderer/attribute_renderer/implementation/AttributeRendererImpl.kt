@@ -1,12 +1,11 @@
 package com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementation
 
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
+import android.webkit.WebView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.airbnb.lottie.LottieAnimationView
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.AttributeRenderer
 import com.google.android.material.navigation.NavigationView
@@ -35,8 +34,19 @@ object AttributeRendererImpl: AttributeRenderer {
             is LinearLayout->{
                 renderer.factory.linearLayoutAttributesRenderer.render(view, attributes, renderer)
             }
+            is WebView->{
+                renderer.factory.webViewRenderer.render(view, attributes, renderer)
+            }
+            is LottieAnimationView->{
+                renderer.factory.lottieAnimationViewRenderer.render(view, attributes, renderer)
+            }
+            is ImageView->{
+                renderer.factory.imageViewRenderer.render(view, attributes, renderer)
+            }
+            is Button,
+            is EditText,
             is TextView ->{
-                renderer.factory.textViewAttributesRenderer.render(view, attributes, renderer)
+                renderer.factory.textViewAttributesRenderer.render(view as TextView, attributes, renderer)
             }
             else->{
                 renderer.factory.viewAttributesRenderer.render(view, attributes, renderer)

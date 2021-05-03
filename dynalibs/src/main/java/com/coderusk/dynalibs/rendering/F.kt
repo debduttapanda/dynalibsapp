@@ -1,6 +1,20 @@
 package com.coderusk.dynalibs.rendering
 
 object F {
+    const val globals = "globals"
+    const val statusBarColor = "statusBarColor"
+    const val colorFilter = "colorFilter"
+    const val srcUrl = "srcUrl"
+    const val srcDrawable = "srcDrawable"
+    const val matrix = "matrix"
+    const val imageScaleType = "imageScaleType"
+    const val cropToPadding = "cropToPadding"
+    const val baselineAlignBottom = "baselineAlignBottom"
+    const val baseline = "baseline"
+    const val adjustViewBounds = "adjustViewBounds"
+    const val lottie_url = "lottie_url"
+    const val data = "data"
+    const val url = "url"
     const val movementMethod = "movementMethod"
     const val autoLinkMask = "autoLinkMask"
     const val autoSizeTextTypeUniformWithConfiguration = "autoSizeTextTypeUniformWithConfiguration"

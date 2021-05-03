@@ -2,17 +2,20 @@ package com.coderusk.dynalibs.rendering.creator
 
 import android.content.Context
 import android.view.View
+import android.webkit.WebView
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
+import com.airbnb.lottie.LottieAnimationView
 import com.coderusk.dynalibs.customViews.GenericListView
 import com.coderusk.dynalibs.rendering.F
+import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.google.android.material.navigation.NavigationView
 import org.json.JSONObject
 
 object ViewCreatorImpl: ViewCreator {
-    override fun create(context: Context, childData: JSONObject): View?
+    override fun create(context: Context, childData: JSONObject, renderer: Renderer): View?
     {
         if(childData.has(F.type))
         {
@@ -37,6 +40,8 @@ object ViewCreatorImpl: ViewCreator {
                     "Button"-> Button(context)
                     "CheckedTextView"-> CheckedTextView(context)
                     "TextView"-> TextView(context)
+                    "WebView"-> WebView(context)
+                    "LottieAnimationView"-> LottieAnimationView(context)
                     else->View(context)
                 }
             } catch (e: Exception) {

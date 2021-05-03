@@ -10,6 +10,8 @@ import com.coderusk.dynalibs.rendering.drawable.DrawablesRendererImpl
 import com.coderusk.dynalibs.rendering.parser.MovementMethodParserImpl
 import com.coderusk.dynalibs.rendering.parser.implementation.*
 import com.coderusk.dynalibs.rendering.parser.interfaces.*
+import com.coderusk.dynalibs.rendering.renderer.GlobalsRenderer
+import com.coderusk.dynalibs.rendering.renderer.GlobalsRendererImpl
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementation.*
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.*
@@ -21,6 +23,32 @@ import com.coderusk.dynalibs.rendering.renderer.others.implementations.*
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 class FactoryImpl: Factory {
+    override val globalsRenderer: GlobalsRenderer
+        get() = GlobalsRendererImpl
+    override val imageViewRenderer: ImageViewRenderer
+        get() = ImageViewRendererImpl
+    override val lottieAnimationViewRenderer: LottieAnimationRenderer
+        get() = LottieAnimationRendererImpl
+    override val webViewRenderer: WebViewRenderer
+        get() = WebViewRendererImpl
+    override val inputTypeParser: InputTypeParser
+        get() = InputTypeParserImpl
+    override val textRenderer: TextRenderer
+        get() = TextRendererImpl
+    override val textStyleParser: TextStyleParser
+        get() = TextStyleParserImpl
+    override val justificationModeParser: JustificationModeParser
+        get() = JustificationModeParserImpl
+    override val imeOptionsParser: ImeOptionsParser
+        get() = ImeOptionsParserImpl
+    override val hyphenationFrequencyParser: HyphenationFrequencyParser
+        get() = HyphenationFrequencyParserImpl
+    override val ellipsizeParser: EllipsizeParser
+        get() = EllipsizeParserImpl
+    override val breakStrategyParser: BreakStrategyParser
+        get() = BreakStrategyParserImpl
+    override val autoSizeTextTypeWidthDefaultsParser: AutoSizeTextTypeWithDefaultsParser
+        get() = AutoSizeTextTypeWithDefaultsParserImpl
     override val autoLinkMaskParser: AutoLinkMaskParser
         get() = AutoLinkMaskParserImpl
     override val movementMethodParser: MovementMethodParser

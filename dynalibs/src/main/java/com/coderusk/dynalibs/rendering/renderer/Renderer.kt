@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
+import com.coderusk.dynalibs.SPR
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.factory.Factory
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenComposer
@@ -18,6 +19,11 @@ class Renderer(private var context: Activity, var json: JSONObject, var scriptin
         idManager.traverseIds(json)
     }
     private var drawablesRenderer = factory.getDrawableRenderer(context,this)
+
+    fun renderGlobals()
+    {
+        factory.globalsRenderer.render(json,this)
+    }
 
     fun renderLayout(parentClass: Class<*> = ViewGroup::class.java): ChildrenComposer
     {
@@ -51,10 +57,17 @@ class Renderer(private var context: Activity, var json: JSONObject, var scriptin
     fun renderChild(parentClass: Class<*>, childData: JSONObject): View? {
         val layoutParams = factory.getLayoutParamCreator().create(parentClass)
         factory.getLayoutParamRenderer().render(this, layoutParams, childData)
-        val view = factory.getViewCreator().create(context, childData)
+        val view = factory.getViewCreator().create(context, childData,this)
         if(view==null)
         {
             return null
+        }
+        childData.SPR(F.id){
+            var id = getId(it as String)
+            if(id!=0)
+            {
+                view.id = id
+            }
         }
         view.layoutParams = layoutParams
         if(childData.has(F.attributes))

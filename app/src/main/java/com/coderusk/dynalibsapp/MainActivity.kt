@@ -79,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         {
             var renderer = Renderer(this,layout,scripting, FactoryImpl())
             var cp = renderer.renderLayout(ConstraintLayout::class.java)
+            renderer.renderGlobals()
             cp.addToParentDirectly(cl_root)
         }
     }
