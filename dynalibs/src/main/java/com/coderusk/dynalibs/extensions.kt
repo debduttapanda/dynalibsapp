@@ -2,6 +2,7 @@ package com.coderusk.dynalibs
 
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.BlurMaskFilter
 import android.graphics.Color
 import android.util.Log
 import android.util.TypedValue
@@ -285,3 +286,50 @@ fun JSONObject.sGetStringArray(key: String, callback: (List<String>) -> Unit)
     }
 }
 
+fun String.spacePart(part: Int): String{
+    if(part>-1)
+    {
+        if(this.contains(" "))
+        {
+            var parts = this.split(" ")
+            if(parts.size>part)
+            {
+                return parts[part]
+            }
+        }
+    }
+    return ""
+}
+
+fun String.commaParts(): List<String>{
+    if(this.contains(","))
+    {
+        return split(",")
+    }
+    return List(0){""}
+}
+
+fun List<String>.toFloatArray():FloatArray
+{
+    var arr = FloatArray(this.size)
+    for(i in this.indices)
+    {
+        var item = this[i]
+        try {
+            arr[i] = item.toFloat()
+        } catch (e: Exception) {
+        }
+    }
+    return arr
+}
+
+fun String.toBlur(): BlurMaskFilter.Blur
+{
+    return when(this){
+        "NORMAL" -> BlurMaskFilter.Blur.NORMAL
+        "SOLID" -> BlurMaskFilter.Blur.SOLID
+        "OUTER" -> BlurMaskFilter.Blur.OUTER
+        "INNER" -> BlurMaskFilter.Blur.INNER
+        else-> BlurMaskFilter.Blur.NORMAL
+    }
+}

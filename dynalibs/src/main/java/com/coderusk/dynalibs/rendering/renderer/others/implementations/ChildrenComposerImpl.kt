@@ -1,9 +1,9 @@
-package com.coderusk.dynalibs.rendering.renderer.implementations
+package com.coderusk.dynalibs.rendering.renderer.others.implementations
 
 import android.view.View
 import android.view.ViewGroup
 import com.coderusk.dynalibs.rendering.renderer.Renderer
-import com.coderusk.dynalibs.rendering.renderer.interfaces.ChildrenComposer
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenComposer
 import org.json.JSONArray
 import org.json.JSONObject
 

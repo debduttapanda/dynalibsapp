@@ -7,19 +7,26 @@ import com.coderusk.dynalibs.rendering.creator.ViewCreator
 import com.coderusk.dynalibs.rendering.creator.ViewCreatorImpl
 import com.coderusk.dynalibs.rendering.drawable.DrawablesRenderer
 import com.coderusk.dynalibs.rendering.drawable.DrawablesRendererImpl
-import com.coderusk.dynalibs.rendering.renderer.Renderer
+import com.coderusk.dynalibs.rendering.parser.MovementMethodParserImpl
 import com.coderusk.dynalibs.rendering.parser.implementation.*
 import com.coderusk.dynalibs.rendering.parser.interfaces.*
+import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementation.*
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.field_renderer.implementations.*
 import com.coderusk.dynalibs.rendering.renderer.field_renderer.interfaces.*
-import com.coderusk.dynalibs.rendering.renderer.implementations.*
-import com.coderusk.dynalibs.rendering.renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.layout_param_renderer.implementations.LayoutParamRendererImpl
 import com.coderusk.dynalibs.rendering.renderer.layout_param_renderer.interfaces.LayoutParamRenderer
+import com.coderusk.dynalibs.rendering.renderer.others.implementations.*
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 class FactoryImpl: Factory {
+    override val autoLinkMaskParser: AutoLinkMaskParser
+        get() = AutoLinkMaskParserImpl
+    override val movementMethodParser: MovementMethodParser
+        get() = MovementMethodParserImpl
+    override val textViewAttributesRenderer: TextViewAttributesRenderer
+        get() = TextViewAttributesRendererImpl
     override val dimensionParser: DimensionParser
         get() = DimensionParserImpl
     override val childrenAttacher: ChildrenAttacher

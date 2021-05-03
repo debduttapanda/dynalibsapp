@@ -4,15 +4,18 @@ import android.app.Activity
 import com.coderusk.dynalibs.rendering.creator.LayoutParamCreator
 import com.coderusk.dynalibs.rendering.creator.ViewCreator
 import com.coderusk.dynalibs.rendering.drawable.DrawablesRenderer
-import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.parser.interfaces.*
+import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.field_renderer.interfaces.*
-import com.coderusk.dynalibs.rendering.renderer.implementations.ChildrenComposerImpl
-import com.coderusk.dynalibs.rendering.renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.layout_param_renderer.interfaces.LayoutParamRenderer
+import com.coderusk.dynalibs.rendering.renderer.others.implementations.ChildrenComposerImpl
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 interface Factory {
+    val autoLinkMaskParser: AutoLinkMaskParser
+    val movementMethodParser: MovementMethodParser
+    val textViewAttributesRenderer: TextViewAttributesRenderer
     val dimensionParser: DimensionParser
     val childrenAttacher: ChildrenAttacher
     val actionRenderer: ActionRenderer

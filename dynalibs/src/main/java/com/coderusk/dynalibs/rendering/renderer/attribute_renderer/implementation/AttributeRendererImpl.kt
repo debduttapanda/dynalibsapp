@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.coderusk.dynalibs.rendering.renderer.Renderer
@@ -33,6 +34,9 @@ object AttributeRendererImpl: AttributeRenderer {
             }
             is LinearLayout->{
                 renderer.factory.linearLayoutAttributesRenderer.render(view, attributes, renderer)
+            }
+            is TextView ->{
+                renderer.factory.textViewAttributesRenderer.render(view, attributes, renderer)
             }
             else->{
                 renderer.factory.viewAttributesRenderer.render(view, attributes, renderer)

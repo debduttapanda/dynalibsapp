@@ -1,9 +1,9 @@
-package com.coderusk.dynalibs.rendering.renderer.implementations
+package com.coderusk.dynalibs.rendering.renderer.others.implementations
 
 import android.view.ViewGroup
 import com.coderusk.dynalibs.rendering.renderer.ATTACHMENT_TYPE
-import com.coderusk.dynalibs.rendering.renderer.interfaces.ChildrenAttacher
-import com.coderusk.dynalibs.rendering.renderer.interfaces.ChildrenComposer
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenAttacher
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenComposer
 
 object ChildrenAttacherImpl: ChildrenAttacher {
 

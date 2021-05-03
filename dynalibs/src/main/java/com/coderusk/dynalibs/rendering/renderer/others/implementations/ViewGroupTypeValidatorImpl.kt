@@ -1,4 +1,4 @@
-package com.coderusk.dynalibs.rendering.renderer.implementations
+package com.coderusk.dynalibs.rendering.renderer.others.implementations
 
 import android.view.ViewGroup
 import android.widget.*
@@ -6,7 +6,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.coderusk.dynalibs.customViews.GenericListView
-import com.coderusk.dynalibs.rendering.renderer.interfaces.ViewGroupTypeValidator
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ViewGroupTypeValidator
 import com.google.android.material.navigation.NavigationView
 
 object ViewGroupTypeValidatorImpl: ViewGroupTypeValidator {

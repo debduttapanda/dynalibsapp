@@ -1,9 +1,9 @@
-package com.coderusk.dynalibs.rendering.renderer.implementations
+package com.coderusk.dynalibs.rendering.renderer.others.implementations
 
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintSet
 import com.coderusk.dynalibs.rendering.F
-import com.coderusk.dynalibs.rendering.renderer.interfaces.IdManager
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.IdManager
 import org.json.JSONArray
 import org.json.JSONObject
 

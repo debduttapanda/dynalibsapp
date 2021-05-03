@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.factory.Factory
-import com.coderusk.dynalibs.rendering.renderer.interfaces.ChildrenComposer
+import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenComposer
 import com.coderusk.dynalibs.scripting.AndroidScripting
 import org.json.JSONObject
 

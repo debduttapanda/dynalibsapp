@@ -1,4 +1,4 @@
-package com.coderusk.dynalibs.rendering.renderer.interfaces
+package com.coderusk.dynalibs.rendering.renderer.others.interfaces
 
 import android.view.View
 import org.json.JSONArray
