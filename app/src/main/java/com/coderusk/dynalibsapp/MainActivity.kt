@@ -1,18 +1,13 @@
 package com.coderusk.dynalibsapp
 
-import android.R.attr.name
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.coderusk.dynalibs.*
-import com.coderusk.dynalibs.rendering.Renderer
-import com.coderusk.dynalibs.scripting.AndroidScripting
+import com.coderusk.dynalibs.rendering.factory.FactoryImpl
+import com.coderusk.dynalibs.rendering.renderer.Renderer
+import com.coderusk.dynalibs.scripting.AndroidScriptingImpl
 import com.coderusk.dynalibs.scripting.HostApi
-import com.jsoniter.JsonIterator
-import org.json.JSONObject
-import org.json.JSONTokener
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         cl_root = findViewById(R.id.cl_root)
-        var scripting = AndroidScripting(object : HostApi {
+        var scripting = AndroidScriptingImpl(object : HostApi {
             override fun callback(message: String) {
                 if (message.isNotEmpty()) {
                     try {
@@ -79,5 +74,12 @@ class MainActivity : AppCompatActivity() {
         ).result.logd(tag)
         scripting.evaluateForResult("Math.PI").result.logd(tag)
         scripting.terminate()
+        var layout = R.raw.layout.rawString(this).toJsonObject()
+        if(layout!=null)
+        {
+            var renderer = Renderer(this,layout,scripting, FactoryImpl())
+            var cp = renderer.renderLayout(ConstraintLayout::class.java)
+            cp.addToParentDirectly(cl_root)
+        }
     }
 }

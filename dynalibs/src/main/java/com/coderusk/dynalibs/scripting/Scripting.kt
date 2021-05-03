@@ -8,11 +8,7 @@ import java.lang.Exception
 class Scripting() {
     val DATA_TYPE_IS_NOT_STRING = "Data type is not string"
     private var loadCount = 0
-    class EvaluationResult(success: Boolean, result: String)
-    {
-        var success = success
-        var result = result
-    }
+
     private var terminated = false
     private var duktapeJs = DuktapeJs()
     init {

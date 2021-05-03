@@ -1,7 +1,30 @@
 {
   "children": [
     {
-      "type": 1
+      "type": "LinearLayout",
+      "id": "l",
+      "attributes": {
+        "layout_width": "200dp",
+        "layout_height": "200dp",
+        "background": "green",
+        "rightToRight": "parent",
+        "leftToLeft": "parent",
+        "bottomToBottom": "parent",
+        "topToTop": "parent",
+        "rotation": 30
+      },
+      "children": [
+        {
+          "type": "View",
+          "id": "v",
+          "attributes": {
+            "layout_width": "60dp",
+            "layout_height": "60dp",
+            "background": "red",
+            "layout_gravity": "center"
+          }
+        }
+      ]
     }
   ]
 }
