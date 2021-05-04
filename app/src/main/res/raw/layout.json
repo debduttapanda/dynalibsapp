@@ -78,11 +78,36 @@
       "type": "LinearLayout",
       "id": "llv",
       "attributes": {
+        "orientation": "vertical",
         "layout_width": "match_parent",
         "layout_height": "match_parent",
         "background": "white"
       },
       "children": [
+        {
+          "type": "VideoPlayer",
+          "attributes": {
+            "layout_width": "match_parent",
+            "layout_height": "wrap_content",
+            "url": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          }
+        },
+        {
+          "type": "Carousel",
+          "id": "car",
+          "attributes": {
+            "layout_width": "match_parent",
+            "layout_height": "200dp",
+            "layout_margin": "20dp",
+            "time": 3000,
+            "images": [
+              "https://picsum.photos/536/354",
+              "https://picsum.photos/id/237/536/354",
+              "https://picsum.photos/seed/picsum/536/354",
+              "https://picsum.photos/id/1084/536/354?grayscale"
+            ]
+          }
+        },
         {
           "type": "RadioGroup",
           "id": "rg",
@@ -107,6 +132,213 @@
               }
             }
           ]
+        },
+        {
+          "type": "CheckBox",
+          "id": "cb",
+          "attributes": {
+            "layout_width": "match_parent",
+            "layout_height": "wrap_content",
+            "textColor": "black",
+            "buttonTint": "black",
+            "textContent": {
+              "textContentType": "text",
+              "text": "Check Box 1"
+            }
+          }
+        },
+        {
+          "type": "GenericListView",
+          "id": "glv",
+          "attributes": {
+            "layout_width": "match_parent",
+            "layout_height": "match_parent",
+            "background": "white"
+          },
+        "children": [
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "wrap_content",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "wrap_content",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "wrap_content",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          },
+          {
+            "type": "CheckBox",
+            "attributes": {
+              "layout_width": "match_parent",
+              "layout_height": "200dp",
+              "textColor": "black",
+              "buttonTint": "black",
+              "textContent": {
+                "textContentType": "text",
+                "text": "Check Box 1"
+              }
+            }
+          }
+        ]
         }
       ]
     }

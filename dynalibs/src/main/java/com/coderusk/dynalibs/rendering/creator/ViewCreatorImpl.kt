@@ -8,7 +8,9 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.airbnb.lottie.LottieAnimationView
+import com.coderusk.dynalibs.customViews.AutoImageViewPager
 import com.coderusk.dynalibs.customViews.GenericListView
+import com.coderusk.dynalibs.customViews.VideoPlayer
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.svg.SVGImageView
@@ -21,15 +23,16 @@ object ViewCreatorImpl: ViewCreator {
         if(childData.has(F.type))
         {
             try {
-                val type = childData.getString(F.type)
-                return when(type)
+                return when(childData.getString(F.type))
                 {
+                    "VideoPlayer"-> VideoPlayer(context)
+                    "Carousel"-> AutoImageViewPager(context)
                     "GenericListView"-> GenericListView(context)
                     "NavigationView"-> NavigationView(context)
                     "DrawerLayout"-> DrawerLayout(context)
                     "FrameLayout"-> FrameLayout(context)
-                    "ScrollView"-> ScrollView(context)
                     "HorizontalScrollView"-> HorizontalScrollView(context)
+                    "ScrollView"-> ScrollView(context)
                     "CardView"-> CardView(context)
                     "ConstraintLayout"-> ConstraintLayout(context)
                     "RelativeLayout"-> RelativeLayout(context)

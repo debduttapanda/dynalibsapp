@@ -15,6 +15,11 @@ import com.coderusk.dynalibs.rendering.renderer.others.implementations.ChildrenC
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 interface Factory {
+    val videoPlayerAttributesRenderer: VideoPlayerAttributesRenderer
+    val glvChildrenAttacher: GlvChildrenAttacher
+    val horizontalScrollViewAttributesRenderer: HorizontalScrollViewAttributesRenderer
+    val checkBoxAttributeRenderer: CheckBoxAttributesRenderer
+    val autoImageViewPagerAttributesRenderer: AutoImageViewPagerAttributesRenderer
     val compoundButtonAttributesRenderer: CompoundButtonAttributesRenderer
     val radioButtonAttributesRenderer: RadioButtonAttributesRenderer
     val svgImageViewRenderer: SVGImageViewAttributesRenderer

@@ -23,6 +23,16 @@ import com.coderusk.dynalibs.rendering.renderer.others.implementations.*
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 class FactoryImpl: Factory {
+    override val videoPlayerAttributesRenderer: VideoPlayerAttributesRenderer
+        get() = VideoPlayerAttributesRendererImpl
+    override val glvChildrenAttacher: GlvChildrenAttacher
+        get() = GlvChildrenAttacherImpl
+    override val horizontalScrollViewAttributesRenderer: HorizontalScrollViewAttributesRenderer
+        get() = HorizontalScrollViewAttributesRendererImpl
+    override val checkBoxAttributeRenderer: CheckBoxAttributesRenderer
+        get() = CheckBoxAttributesRendererImpl
+    override val autoImageViewPagerAttributesRenderer: AutoImageViewPagerAttributesRenderer
+        get() = AutoImageViewPagerAttributesRendererImpl
     override val compoundButtonAttributesRenderer: CompoundButtonAttributesRenderer
         get() = CompoundButtonAttributesRendererImpl
     override val radioButtonAttributesRenderer: RadioButtonAttributesRenderer

@@ -33,8 +33,8 @@ class ChildrenComposerImpl(var renderer: Renderer): ChildrenComposer
                 for(i in 0 until n)
                 {
                     try {
-                        var childData = childrenData!![i] as JSONObject
-                        var view = renderer.renderChild(parent.javaClass,childData)
+                        val childData = childrenData!![i] as JSONObject
+                        val view = renderer.renderChild(parent.javaClass,childData)
                         parent.addView(view)
                     } catch (e: Exception) {
                     }

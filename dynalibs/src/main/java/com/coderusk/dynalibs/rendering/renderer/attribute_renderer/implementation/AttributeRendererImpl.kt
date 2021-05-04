@@ -6,6 +6,8 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.lottie.LottieAnimationView
+import com.coderusk.dynalibs.customViews.AutoImageViewPager
+import com.coderusk.dynalibs.customViews.VideoPlayer
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.AttributeRenderer
 import com.coderusk.dynalibs.svg.SVGImageView
@@ -17,6 +19,15 @@ object AttributeRendererImpl: AttributeRenderer {
     {
         when(view)
         {
+            is VideoPlayer ->{
+                renderer.factory.videoPlayerAttributesRenderer.render(view, attributes, renderer)
+            }
+            is AutoImageViewPager ->{
+                renderer.factory.autoImageViewPagerAttributesRenderer.render(view, attributes, renderer)
+            }
+            is HorizontalScrollView ->{
+                renderer.factory.horizontalScrollViewAttributesRenderer.render(view, attributes, renderer)
+            }
             is ScrollView ->{
                 renderer.factory.scrollViewAttributesRenderer.render(view, attributes, renderer)
             }
@@ -46,6 +57,9 @@ object AttributeRendererImpl: AttributeRenderer {
             }
             is ImageView->{
                 renderer.factory.imageViewRenderer.render(view, attributes, renderer)
+            }
+            is CheckBox ->{
+                renderer.factory.checkBoxAttributeRenderer.render(view, attributes, renderer)
             }
             is RadioButton->{
                 renderer.factory.radioButtonAttributesRenderer.render(view, attributes, renderer)

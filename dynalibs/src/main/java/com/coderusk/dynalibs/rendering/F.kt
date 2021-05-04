@@ -1,6 +1,13 @@
 package com.coderusk.dynalibs.rendering
 
 object F {
+    const val column = "column"
+    const val reverse = "reverse"
+    const val vertical = "vertical"
+    const val grid = "grid"
+    const val attachOptions = "attachOptions"
+    const val time = "time"
+    const val images = "images"
     const val buttonTint = "buttonTint"
     const val button = "button"
     const val svgRaw = "svgRaw"

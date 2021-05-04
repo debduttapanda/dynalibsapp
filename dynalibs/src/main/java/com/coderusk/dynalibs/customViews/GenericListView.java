@@ -65,6 +65,18 @@ public class GenericListView extends RecyclerView {
         boolean isReverse();
 
         int getVisibility();
+
+        void onViewRecycled(MenuListAdapter.MyViewHolder holder);
+
+        void onFailedToRecycleView(MenuListAdapter.MyViewHolder holder);
+
+        void onViewAttachedToWindow(MenuListAdapter.MyViewHolder holder);
+
+        void onViewDetachedFromWindow(MenuListAdapter.MyViewHolder holder);
+
+        void onAttachedToRecyclerView(RecyclerView recyclerView);
+
+        void onDetachedFromRecyclerView(RecyclerView recyclerView);
     }
 
     private EventCallback callback = null;
@@ -160,8 +172,62 @@ public class GenericListView extends RecyclerView {
     }
 
     /****************************************************************/
-    class MenuListAdapter extends Adapter<MenuListAdapter.MyViewHolder> {
+    public class MenuListAdapter extends Adapter<MenuListAdapter.MyViewHolder> {
         private Context context;
+
+        @Override
+        public void onViewRecycled(@NonNull MyViewHolder holder) {
+            super.onViewRecycled(holder);
+            if(callback!=null)
+            {
+                callback.onViewRecycled(holder);
+            }
+        }
+
+        @Override
+        public boolean onFailedToRecycleView(@NonNull MyViewHolder holder) {
+            if(callback!=null)
+            {
+                callback.onFailedToRecycleView(holder);
+            }
+            return super.onFailedToRecycleView(holder);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(@NonNull MyViewHolder holder) {
+            super.onViewAttachedToWindow(holder);
+            if(callback!=null)
+            {
+                callback.onViewAttachedToWindow(holder);
+            }
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(@NonNull MyViewHolder holder) {
+            super.onViewDetachedFromWindow(holder);
+            if(callback!=null)
+            {
+                callback.onViewDetachedFromWindow(holder);
+            }
+        }
+
+        @Override
+        public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+            super.onAttachedToRecyclerView(recyclerView);
+            if(callback!=null)
+            {
+                callback.onAttachedToRecyclerView(recyclerView);
+            }
+        }
+
+        @Override
+        public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+            super.onDetachedFromRecyclerView(recyclerView);
+            if(callback!=null)
+            {
+                callback.onDetachedFromRecyclerView(recyclerView);
+            }
+        }
 
         public class MyViewHolder extends ViewHolder {
             public View anyViewItem;

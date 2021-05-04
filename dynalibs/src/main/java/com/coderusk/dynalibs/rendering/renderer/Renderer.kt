@@ -81,7 +81,8 @@ class Renderer(private var context: Activity, var json: JSONObject, var scriptin
             factory.actionRenderer.render(view, actions)
         }
         var childrenComposer = factory.getChildrenComposerImpl(this)
-        if(validParentClass(parentClass))
+        //if(validParentClass(parentClass))
+        if(validParentClass(view.javaClass))
         {
             if(childData.has(F.children))
             {
@@ -92,7 +93,14 @@ class Renderer(private var context: Activity, var json: JSONObject, var scriptin
                     attachment = childData.getJSONObject(F.attachment)
                 }
                 childrenComposer.set(parentClass,childrenData,attachment)
-                factory.childrenAttacher.attachChildren(view as ViewGroup,childrenComposer)
+                var attachOptions: JSONObject? = null
+                if(childData.has(F.attachOptions)){
+                    try {
+                        attachOptions = childData.getJSONObject(F.attachOptions)
+                    } catch (e: Exception) {
+                    }
+                }
+                factory.childrenAttacher.attachChildren(view as ViewGroup,childrenComposer,attachOptions = attachOptions,renderer = this)
             }
         }
         return view
