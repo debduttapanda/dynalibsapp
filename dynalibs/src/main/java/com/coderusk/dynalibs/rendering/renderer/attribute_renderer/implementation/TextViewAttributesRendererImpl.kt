@@ -160,7 +160,7 @@ object TextViewAttributesRendererImpl: TextViewAttributesRenderer {
                         shadowLayer[0].toFloat(),
                         shadowLayer[1].toFloat(),
                         shadowLayer[2].toFloat(),
-                        shadowLayer[3].toColor()
+                        renderer.factory.colorParser.parse(shadowLayer[3],renderer)
                 )
             }
         }
@@ -171,27 +171,23 @@ object TextViewAttributesRendererImpl: TextViewAttributesRenderer {
         attributes.sGetBoolean(F.isAllCaps){
             view.isAllCaps = it
         }
-        attributes.sGetColor(F.textColor){
-            view.setTextColor(it)
+        attributes.sGetString(F.textColor){
+            view.setTextColor(renderer.factory.colorParser.parse(it,renderer))
         }
-        attributes.sGetColor(F.highlightColor){
-            view.highlightColor =it
+        attributes.sGetString(F.highlightColor){
+            view.highlightColor =renderer.factory.colorParser.parse(it,renderer)
         }
-        attributes.sGetColor(F.hintColor){
-            view.setHintTextColor(it)
+        attributes.sGetString(F.hintColor){
+            view.setHintTextColor(renderer.factory.colorParser.parse(it,renderer))
         }
-        attributes.sGetColor(F.linkColor){
-            view.setLinkTextColor(it)
+        attributes.sGetString(F.linkColor){
+            view.setLinkTextColor(renderer.factory.colorParser.parse(it,renderer))
         }
         attributes.sGetString(F.cursorDrawable){ str->
-            if(str.startsWith("$"))
+            val d = renderer.getDrawable(str)
+            if(d!=null)
             {
-                var dstr = str.replace("$","")
-                var d = renderer.getDrawable(dstr)
-                if(d!=null)
-                {
-                    view.textCursorDrawable = d
-                }
+                view.textCursorDrawable = d
             }
         }
         attributes.sGetBoolean(F.textIsSelectable){
@@ -201,36 +197,24 @@ object TextViewAttributesRendererImpl: TextViewAttributesRenderer {
             view.textScaleX = it
         }
         attributes.sGetString(F.textSelectHandle){ str ->
-            if(str.startsWith("$"))
+            var d = renderer.getDrawable(str)
+            if(d!=null)
             {
-                var dstr = str.replace("$","")
-                var d = renderer.getDrawable(dstr)
-                if(d!=null)
-                {
-                    view.setTextSelectHandle(d)
-                }
+                view.setTextSelectHandle(d)
             }
         }
         attributes.sGetString(F.textSelectHandleLeft){ str ->
-            if(str.startsWith("$"))
+            var d = renderer.getDrawable(str)
+            if(d!=null)
             {
-                var dstr = str.replace("$","")
-                var d = renderer.getDrawable(dstr)
-                if(d!=null)
-                {
-                    view.setTextSelectHandleLeft(d)
-                }
+                view.setTextSelectHandleLeft(d)
             }
         }
         attributes.sGetString(F.textSelectHandleRight){ str ->
-            if(str.startsWith("$"))
+            var d = renderer.getDrawable(str)
+            if(d!=null)
             {
-                var dstr = str.replace("$","")
-                var d = renderer.getDrawable(dstr)
-                if(d!=null)
-                {
-                    view.setTextSelectHandleRight(d)
-                }
+                view.setTextSelectHandleRight(d)
             }
         }
         attributes.sGetFloat(F.textSize){
@@ -273,12 +257,6 @@ object TextViewAttributesRendererImpl: TextViewAttributesRenderer {
 
     private fun getDrawableContentById(str: String, renderer: Renderer): Drawable?
     {
-        if(str.startsWith("$"))
-        {
-            var dstr = str.replace("$","")
-            var d = renderer.getDrawable(dstr)
-            return d
-        }
-        return null
+        return renderer.getDrawable(str)
     }
 }

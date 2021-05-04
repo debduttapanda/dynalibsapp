@@ -20,11 +20,7 @@ object LinearLayoutAttributesRendererImpl: LinearLayoutAttributesRenderer {
             view.baselineAlignedChildIndex = it as Int
         }
         attributes.SPR(F.dividerDrawable){
-            var value = it as String
-            if(value.startsWith("$")){
-                value = value.replace("$","")
-                view.dividerDrawable = renderer.getDrawable(value)
-            }
+            view.dividerDrawable = renderer.getDrawable(it as String)
         }
         attributes.SPR(F.gravity){
             view.gravity = renderer.factory.gravityParser.parse(it as String)

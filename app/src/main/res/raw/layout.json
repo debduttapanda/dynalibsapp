@@ -2,10 +2,81 @@
   "globals": {
     "statusBarColor": "#fcba03"
   },
+  "drawables": [
+    {
+      "type": "stateListDrawable",
+      "did": "states",
+      "states": [
+        {
+          "state": "normal",
+          "item": "base1"
+        },
+        {
+          "state": "checked",
+          "item": "base2"
+        }
+      ]
+    },
+    {
+      "type": "pathDrawable",
+      "did": "path1",
+      "path":
+      {
+        "pathData": "M300,200 h-150 a150,150 0 1,0 150,-150 z",
+        "pathStandardWidth": 800.0,
+        "pathStandardHeight": 800.0,
+        "size": 600,
+        "paint_options": {
+          "color": "blue",
+          "style": "fill",
+          "shadowLayer": "50 50 50 gray"
+        }
+      }
+    },
+    {
+      "type": "drawable",
+      "did": "base1",
+      "definition": {
+        "shape": "rectangle",
+        "cornerRadius": "5dp",
+        "solidColor": "red"
+      }
+    },
+    {
+      "type": "drawable",
+      "did": "base2",
+      "definition": {
+        "shape": "rectangle",
+        "corner_radius": "5dp",
+        "solidColor": "blue"
+      }
+    },
+    {
+      "type": "layersDrawable",
+      "did": "layers",
+      "definition": {
+        "padding_left": 100
+      },
+      "layers": [
+        {
+          "did": "base1",
+          "options": {
+
+          }
+        },
+        {
+          "did": "path1",
+          "options": {
+            "gravity": "right|bottom"
+          }
+        }
+      ]
+    }
+  ],
   "children": [
     {
-      "type": "RelativeLayout",
-      "id": "rl_root",
+      "type": "LinearLayout",
+      "id": "llv",
       "attributes": {
         "layout_width": "match_parent",
         "layout_height": "match_parent",
@@ -13,75 +84,27 @@
       },
       "children": [
         {
-          "type": "RelativeLayout",
-          "id": "rl_head",
+          "type": "RadioGroup",
+          "id": "rg",
           "attributes": {
             "layout_width": "match_parent",
-            "layout_height": "70dp",
-            "background": "#f5b400"
+            "layout_height": "wrap_content"
           },
           "children": [
             {
-              "type": "ImageView",
-              "id": "iv_back",
-              "attributes": {
-                "layout_width": "30dp",
-                "layout_height": "30dp",
-                "layout_centerVertical": true,
-                "layout_marginLeft": "15dp",
-                "srcUrl": "https://firebasestorage.googleapis.com/v0/b/coderusk.appspot.com/o/dashboard%2Fleft-arrow.png?alt=media&token=8fd27ea9-3c32-4290-b3e5-baa2713d2d74"
-              }
-            },
-            {
-              "type": "TextView",
-              "id": "tv_head",
-              "attributes": {
-                "layout_centerVertical": true,
-                "layout_width": "wrap_content",
-                "layout_height": "wrap_content",
-                "textColor": "white",
-                "layout_toRightOf": "iv_back",
-                "textSize": "30",
-                "layout_marginLeft": "20dp",
-                "textContent": {
-                  "textContentType": "text",
-                  "text": "Header"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "type": "RelativeLayout",
-          "id": "rl_content",
-          "attributes": {
-            "layout_width": "match_parent",
-            "layout_height": "match_parent",
-            "layout_below": "rl_head"
-          },
-          "children": [
-            {
-              "type": "CardView",
-              "id": "cv_image",
+              "type": "RadioButton",
+              "id": "rb1",
               "attributes": {
                 "layout_width": "match_parent",
-                "layout_height": "200dp",
-                "layout_margin": "10dp",
-                "radius": "5dp",
-                "cardBackgroundColor": "white"
-              },
-              "children": [
-                {
-                  "type": "ImageView",
-                  "id": "iv_image",
-                  "attributes": {
-                    "layout_width": "match_parent",
-                    "layout_height": "match_parent",
-                    "srcUrl": "https://picsum.photos/id/1084/536/354?grayscale",
-                    "imageScaleType": "center_crop"
-                  }
+                "layout_height": "wrap_content",
+                "button": "@null",
+                "background": "drawable/states",
+                "textColor": "black",
+                "textContent": {
+                  "textContentType": "text",
+                  "text": "Radio Button 1"
                 }
-              ]
+              }
             }
           ]
         }

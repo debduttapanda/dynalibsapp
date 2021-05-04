@@ -7,7 +7,6 @@ import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.ImageViewRenderer
 import com.coderusk.dynalibs.sGetBoolean
-import com.coderusk.dynalibs.sGetColor
 import com.coderusk.dynalibs.sGetFloatArray
 import com.coderusk.dynalibs.sGetString
 import org.json.JSONObject
@@ -53,7 +52,7 @@ object ImageViewRendererImpl : ImageViewRenderer {
             view.imageMatrix = m
         }
         attributes.sGetString(F.srcDrawable){
-            view.setImageDrawable(renderer.getDrawable(it.replace("$","")))
+            view.setImageDrawable(renderer.getDrawable(it))
         }
         attributes.sGetString(F.srcUrl){
             var glide = Glide
@@ -71,8 +70,8 @@ object ImageViewRendererImpl : ImageViewRenderer {
 
             glide.into(view)
         }
-        attributes.sGetColor(F.colorFilter){
-            view.setColorFilter(it)
+        attributes.sGetString(F.colorFilter){
+            view.setColorFilter(renderer.factory.colorParser.parse(it,renderer))
         }
     }
 }

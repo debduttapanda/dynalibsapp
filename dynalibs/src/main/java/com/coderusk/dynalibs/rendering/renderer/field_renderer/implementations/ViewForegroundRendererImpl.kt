@@ -3,14 +3,13 @@ package com.coderusk.dynalibs.rendering.renderer.field_renderer.implementations
 import android.view.View
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.field_renderer.interfaces.ViewForegroundRenderer
-import com.coderusk.dynalibs.toColor
 
 object ViewForegroundRendererImpl: ViewForegroundRenderer {
     override fun render(view: View, value: String, renderer: Renderer)
     {
-        if(value.startsWith("$"))
+        if(value.startsWith("drawable/"))
         {
-            var did = value.replace("$","")
+            var did = value.replace("drawable/","")
             var drawable = renderer.getDrawable(did)
             if(drawable!=null)
             {
@@ -21,7 +20,7 @@ object ViewForegroundRendererImpl: ViewForegroundRenderer {
         }
         else
         {
-            view.setBackgroundColor(value.toColor())
+            view.setBackgroundColor(renderer.factory.colorParser.parse(value,renderer))
         }
     }
 }

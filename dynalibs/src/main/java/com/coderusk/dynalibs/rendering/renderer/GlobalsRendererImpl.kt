@@ -6,14 +6,13 @@ import android.view.WindowManager
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.sGetJsonObject
 import com.coderusk.dynalibs.sGetString
-import com.coderusk.dynalibs.toColor
 import org.json.JSONObject
 
 object GlobalsRendererImpl : GlobalsRenderer {
     override fun render(json: JSONObject, renderer: Renderer) {
         json.sGetJsonObject(F.globals){globals->
             globals.sGetString(F.statusBarColor){scolor->
-                setStatusBarColor(renderer.getContext(),scolor.toColor())
+                setStatusBarColor(renderer.getContext(),renderer.factory.colorParser.parse(scolor,renderer))
             }
 
         }

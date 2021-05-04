@@ -2,8 +2,6 @@ package com.coderusk.dynalibs
 
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.BlurMaskFilter
-import android.graphics.Color
 import android.util.Log
 import android.util.TypedValue
 import android.widget.Toast
@@ -146,14 +144,14 @@ fun JSONObject.sGetBoolean(key: String, callback: (Boolean) -> Unit)
     } catch (e: Exception) {
     }
 }
-fun String.toColor(): Int{
+/*fun String.toColor(): Int{
     return try {
         Color.parseColor(this)
     } catch (e: Exception) {
         Color.BLACK
     }
-}
-fun JSONObject.sGetColor(key: String, callback: (Int) -> Unit)
+}*/
+/*fun JSONObject.sGetColor(key: String, callback: (Int) -> Unit)
 {
     try {
         if(this.has(key))
@@ -163,7 +161,7 @@ fun JSONObject.sGetColor(key: String, callback: (Int) -> Unit)
         }
     } catch (e: Exception) {
     }
-}
+}*/
 
 fun JSONObject.sGetInt(key: String, callback: (Int) -> Unit)
 {
@@ -323,13 +321,3 @@ fun List<String>.toFloatArray():FloatArray
     return arr
 }
 
-fun String.toBlur(): BlurMaskFilter.Blur
-{
-    return when(this){
-        "NORMAL" -> BlurMaskFilter.Blur.NORMAL
-        "SOLID" -> BlurMaskFilter.Blur.SOLID
-        "OUTER" -> BlurMaskFilter.Blur.OUTER
-        "INNER" -> BlurMaskFilter.Blur.INNER
-        else-> BlurMaskFilter.Blur.NORMAL
-    }
-}

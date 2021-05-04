@@ -11,6 +11,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.coderusk.dynalibs.customViews.GenericListView
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.renderer.Renderer
+import com.coderusk.dynalibs.svg.SVGImageView
 import com.google.android.material.navigation.NavigationView
 import org.json.JSONObject
 
@@ -32,8 +33,10 @@ object ViewCreatorImpl: ViewCreator {
                     "CardView"-> CardView(context)
                     "ConstraintLayout"-> ConstraintLayout(context)
                     "RelativeLayout"-> RelativeLayout(context)
+                    "RadioGroup"-> LinearLayout(context)
                     "LinearLayout"-> LinearLayout(context)
                     "ImageView"-> ImageView(context)
+                    "SVGImageView"-> SVGImageView(context)
                     "EditText"-> EditText(context)
                     "CheckBox"-> CheckBox(context)
                     "RadioButton"-> RadioButton(context)

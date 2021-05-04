@@ -24,7 +24,7 @@ object ViewAttributesRendererImpl: ViewAttributesRenderer {
         }
         attributes.APR(F.backgroundTint){
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                view.backgroundTintList = renderer.factory.colorStateListParser.parse(it as JSONArray)
+                view.backgroundTintList = renderer.factory.colorStateListParser.parse(it as JSONArray,renderer)
             }
         }
         attributes.SPR(F.backgroundTintMode){
@@ -181,10 +181,10 @@ object ViewAttributesRendererImpl: ViewAttributesRenderer {
             }
         }
         attributes.SPR(F.outlineAmbientShadowColor){
-            view.outlineAmbientShadowColor = (it as String).toColor()
+            view.outlineAmbientShadowColor = renderer.factory.colorParser.parse(it as String,renderer)
         }
         attributes.SPR(F.outlineSpotShadowColor){
-            view.outlineSpotShadowColor = (it as String).toColor()
+            view.outlineSpotShadowColor = renderer.factory.colorParser.parse(it as String,renderer)
         }
         renderer.factory.paddingRenderer.render(view, attributes, renderer)
         attributes.FPR(F.rotation){
@@ -228,32 +228,16 @@ object ViewAttributesRendererImpl: ViewAttributesRenderer {
             view.scrollBarSize = renderer.factory.dimensionParser.parse(it as String, renderer)
         }
         attributes.SPR(F.horizontalScrollbarThumbDrawable){
-            var value = it as String
-            if(value.startsWith("$")){
-                value = value.replace("$","")
-            }
-            view.horizontalScrollbarThumbDrawable = renderer.getDrawable(value)
+            view.horizontalScrollbarThumbDrawable = renderer.getDrawable(it as String)
         }
         attributes.SPR(F.verticalScrollbarThumbDrawable){
-            var value = it as String
-            if(value.startsWith("$")){
-                value = value.replace("$","")
-            }
-            view.verticalScrollbarThumbDrawable = renderer.getDrawable(value)
+            view.verticalScrollbarThumbDrawable = renderer.getDrawable(it as String)
         }
         attributes.SPR(F.verticalScrollbarTrackDrawable){
-            var value = it as String
-            if(value.startsWith("$")){
-                value = value.replace("$","")
-            }
-            view.verticalScrollbarTrackDrawable = renderer.getDrawable(value)
+            view.verticalScrollbarTrackDrawable = renderer.getDrawable(it as String)
         }
         attributes.SPR(F.horizontalScrollbarTrackDrawable){
-            var value = it as String
-            if(value.startsWith("$")){
-                value = value.replace("$","")
-            }
-            view.horizontalScrollbarTrackDrawable = renderer.getDrawable(value)
+            view.horizontalScrollbarTrackDrawable = renderer.getDrawable(it as String)
         }
         attributes.BPR(F.isHorizontalScrollBarEnabled){
             view.isHorizontalScrollBarEnabled = it as Boolean

@@ -1,17 +1,18 @@
 package com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementation
 
 import androidx.cardview.widget.CardView
-import com.coderusk.dynalibs.*
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.CardViewAttributesRenderer
+import com.coderusk.dynalibs.sGetBoolean
+import com.coderusk.dynalibs.sGetString
 import org.json.JSONObject
 
 object CardViewAttributesRendererImpl: CardViewAttributesRenderer {
     override fun render(view: CardView, attributes: JSONObject, renderer: Renderer) {
         renderer.factory.frameLayoutAttributesRenderer.render(view, attributes, renderer)
         attributes.sGetString(F.cardBackgroundColor) {
-            view.setCardBackgroundColor(it.toColor())
+            view.setCardBackgroundColor(renderer.factory.colorParser.parse(it,renderer))
         }
         attributes.sGetString(F.cardElevation) {
             view.cardElevation = renderer.factory.dimensionParser.parse(it,renderer).toFloat()

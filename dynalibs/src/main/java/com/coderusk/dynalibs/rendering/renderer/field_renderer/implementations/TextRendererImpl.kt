@@ -129,8 +129,8 @@ object TextRendererImpl: TextRenderer {
                 "font" -> Spans.font(value)
                 "strikeThrough" -> Spans.strikeThrough()
                 "underline" -> Spans.underline()
-                "background" -> Spans.background(value.toColor())
-                "foreground" -> Spans.foreground(value.toColor())
+                "background" -> Spans.background(renderer.factory.colorParser.parse(value,renderer))
+                "foreground" -> Spans.foreground(renderer.factory.colorParser.parse(value,renderer))
                 "subscript" -> Spans.subscript()
                 "superscript" -> Spans.superscript()
                 "image" -> {
@@ -150,7 +150,7 @@ object TextRendererImpl: TextRenderer {
                     }
                 }
                 "quote" -> {
-                    Spans.quote(value.toColor())
+                    Spans.quote(renderer.factory.colorParser.parse(value,renderer))
                 }
                 "click" -> {
                     Spans.click {
@@ -170,13 +170,14 @@ object TextRendererImpl: TextRenderer {
                     Spans.alignmentNormal()
                 }
                 "bullet" -> {
-                    Spans.bullet(value.spacePart(0).toInt(), value.spacePart(1).toColor())
+
+                    Spans.bullet(value.spacePart(0).toInt(), renderer.factory.colorParser.parse(value.spacePart(1),renderer))
                 }
                 "leadingMargin" -> {
                     Spans.leadingMargin(value.spacePart(0).toInt(), value.spacePart(1).toInt())
                 }
                 "blur" -> {
-                    Spans.blur(value.spacePart(0).toFloat(), value.spacePart(1).toBlur())
+                    Spans.blur(value.spacePart(0).toFloat(), renderer.factory.blurMaskFilterParser.parse(value.spacePart(1)))
                 }
                 "emboss" -> {
                     Spans.emboss(
@@ -189,7 +190,7 @@ object TextRendererImpl: TextRenderer {
                 }
                 "lineBackground" -> {
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-                        Spans.lineBackground(value.toColor())
+                        Spans.lineBackground(renderer.factory.colorParser.parse(value,renderer))
                     } else {
                         null
                     }
@@ -217,12 +218,7 @@ object TextRendererImpl: TextRenderer {
     }
 
     private fun getDrawableFromId(drawId: String, renderer: Renderer): Drawable? {
-        if(drawId.startsWith("$"))
-        {
-            var did = drawId.replace("$","")
-            return renderer.getDrawable(did)
-        }
-        return null
+        return renderer.getDrawable(drawId)
     }
 
 }

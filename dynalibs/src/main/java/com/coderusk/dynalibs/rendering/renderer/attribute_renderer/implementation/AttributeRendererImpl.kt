@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.coderusk.dynalibs.rendering.renderer.Renderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.AttributeRenderer
+import com.coderusk.dynalibs.svg.SVGImageView
 import com.google.android.material.navigation.NavigationView
 import org.json.JSONObject
 
@@ -40,8 +41,14 @@ object AttributeRendererImpl: AttributeRenderer {
             is LottieAnimationView->{
                 renderer.factory.lottieAnimationViewRenderer.render(view, attributes, renderer)
             }
+            is SVGImageView->{
+                renderer.factory.svgImageViewRenderer.render(view, attributes, renderer)
+            }
             is ImageView->{
                 renderer.factory.imageViewRenderer.render(view, attributes, renderer)
+            }
+            is RadioButton->{
+                renderer.factory.radioButtonAttributesRenderer.render(view, attributes, renderer)
             }
             is Button,
             is EditText,

@@ -7,7 +7,18 @@
     tools:context=".MainActivity"
     android:id="@+id/cl_root">
 
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent">
 
+    <RadioButton
+        android:id="@+id/rb_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#9C27B0"/>
+
+</RadioGroup>
 
 
 

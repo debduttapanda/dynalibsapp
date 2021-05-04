@@ -1,6 +1,9 @@
 package com.coderusk.dynalibs.rendering
 
 object F {
+    const val buttonTint = "buttonTint"
+    const val button = "button"
+    const val svgRaw = "svgRaw"
     const val globals = "globals"
     const val statusBarColor = "statusBarColor"
     const val colorFilter = "colorFilter"

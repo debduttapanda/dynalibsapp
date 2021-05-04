@@ -3,7 +3,7 @@ package com.coderusk.dynalibs.rendering.parser.implementation
 import android.content.res.ColorStateList
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.parser.interfaces.ColorStateListParser
-import com.coderusk.dynalibs.toColor
+import com.coderusk.dynalibs.rendering.renderer.Renderer
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -13,7 +13,7 @@ object ColorStateListParserImpl: ColorStateListParser {
         var cs: IntArray = cs
         var color = color
     }
-    override fun parse(input: JSONArray): ColorStateList?
+    override fun parse(input: JSONArray, renderer: Renderer): ColorStateList?
     {
         var statesObjects = ArrayList<StateItem>()
         var count = input.length()
@@ -28,7 +28,7 @@ object ColorStateListParserImpl: ColorStateListParser {
                     if(stateItem.has(F.color))
                     {
                         var sColor = stateItem.getString(F.color)
-                        var color = sColor.toColor()
+                        var color = renderer.factory.colorParser.parse(sColor,renderer)
                         statesObjects.add(StateItem(cs,color))
                     }
                 }

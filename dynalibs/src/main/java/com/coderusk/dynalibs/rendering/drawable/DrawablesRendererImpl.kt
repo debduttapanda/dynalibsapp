@@ -80,7 +80,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                 if(tint.isNotEmpty())
                 {
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                        drawable?.setTint(tint.toColor())
+                        drawable?.setTint(renderer.factory.colorParser.parse(tint,renderer))
                     }
                 }
                 return drawable
@@ -90,7 +90,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
     }
 
     private fun renderStateListDrawable(content: JSONObject, tint: String): Drawable? {
-        var builder = StateListDrawableBuilder()
+        var builder = MyStateListDrawableBuilder()
 
         try {
             content.sGetJsonArray(F.states){ states->
@@ -124,6 +124,9 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                                             }
                                             "selected" -> {
                                                 builder.selected(dr)
+                                            }
+                                            "checked" -> {
+                                                builder.checked(dr)
                                             }
                                             else -> {}
                                         }
@@ -165,7 +168,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
             content.sGetJsonObject(F.path) { path ->
                 path.sGetJsonObject(F.paintOptions){ options->
                     options.sGetString(F.color){ color->
-                        paint.color = color.toColor()
+                        paint.color = renderer.factory.colorParser.parse(color,renderer)
                     }
                     options.sGetString(F.style){ style->
                         when(style.toLowerCase())
@@ -286,7 +289,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                                 shadowLayer[0].toFloat(),
                                 shadowLayer[1].toFloat(),
                                 shadowLayer[2].toFloat(),
-                                shadowLayer[3].toColor()
+                                renderer.factory.colorParser.parse(shadowLayer[3],renderer)
                             )
                         }
                     }
@@ -327,7 +330,8 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(tint.isNotEmpty())
         {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                d.setTint(tint.toColor())
+                d.setTint(renderer.factory.colorParser.parse(tint,renderer))
+
             }
         }
         return d
@@ -548,28 +552,28 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                     }
                 }
                 definition.sGetString(F.solidColorPressedWhenRippleUnsupported){
-                    builder.solidColorPressedWhenRippleUnsupported(it.toColor())
+                    builder.solidColorPressedWhenRippleUnsupported(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetString(F.solidColorDisabled){
-                    builder.solidColorDisabled(it.toColor())
+                    builder.solidColorDisabled(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetString(F.solidColorSelected){
-                    builder.solidColorSelected(it.toColor())
+                    builder.solidColorSelected(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetInt(F.strokeWidth){
                     builder.strokeWidth(it)
                 }
                 definition.sGetString(F.strokeColor){
-                    builder.strokeColor(it.toColor())
+                    builder.strokeColor(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetString(F.strokeColorPressed){
-                    builder.strokeColorPressed(it.toColor())
+                    builder.strokeColorPressed(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetString(F.strokeColorDisabled){
-                    builder.strokeColorDisabled(it.toColor())
+                    builder.strokeColorDisabled(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetString(F.strokeColorSelected){
-                    builder.strokeColorSelected(it.toColor())
+                    builder.strokeColorSelected(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetInt(F.dashWidth){
                     builder.dashWidth(it)
@@ -698,7 +702,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                     builder.ripple(it)
                 }
                 definition.sGetString(F.rippleColor){
-                    builder.rippleColor(it.toColor())
+                    builder.rippleColor(renderer.factory.colorParser.parse(it,renderer))
                 }
                 definition.sGetInt(F.rippleRadius){
                     builder.rippleRadius(it)
@@ -784,9 +788,9 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
                 if(parts.size==3)
                 {
                     builder.gradientColors(
-                        parts[0].toColor(),
-                        parts[1].toColor(),
-                        parts[2].toColor()
+                            renderer.factory.colorParser.parse(parts[0],renderer),
+                            renderer.factory.colorParser.parse(parts[1],renderer),
+                            renderer.factory.colorParser.parse(parts[2],renderer)
                     )
                 }
             }
@@ -797,7 +801,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(definition.has(F.endColor))
         {
             var endColor = definition.getString(F.endColor)
-            builder.endColor(endColor.toColor())
+            builder.endColor(renderer.factory.colorParser.parse(endColor,renderer))
         }
     }
 
@@ -805,7 +809,8 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(definition.has(F.centerColor))
         {
             var centerColor = definition.getString(F.centerColor)
-            builder.centerColor(centerColor.toColor())
+            builder.centerColor(renderer.factory.colorParser.parse(centerColor,renderer))
+
         }
     }
 
@@ -813,7 +818,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(definition.has(F.startColor))
         {
             var startColor = definition.getString(F.startColor)
-            builder.startColor(startColor.toColor())
+            builder.startColor(renderer.factory.colorParser.parse(startColor,renderer))
         }
     }
 
@@ -954,7 +959,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(definition.has(F.solidColorPressed))
         {
             var solidColor = definition.getString(F.solidColorPressed)
-            builder.solidColorPressed(solidColor.toColor())
+            builder.solidColorPressed(renderer.factory.colorParser.parse(solidColor,renderer))
         }
     }
 
@@ -962,7 +967,7 @@ class DrawablesRendererImpl(var context: Activity, var renderer: Renderer): Draw
         if(definition.has(F.solidColor))
         {
             var solidColor = definition.getString(F.solidColor)
-            builder.solidColor(solidColor.toColor())
+            builder.solidColor(renderer.factory.colorParser.parse(solidColor,renderer))
         }
     }
 

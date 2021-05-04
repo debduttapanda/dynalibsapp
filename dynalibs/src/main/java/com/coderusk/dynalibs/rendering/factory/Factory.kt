@@ -7,6 +7,7 @@ import com.coderusk.dynalibs.rendering.drawable.DrawablesRenderer
 import com.coderusk.dynalibs.rendering.parser.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.GlobalsRenderer
 import com.coderusk.dynalibs.rendering.renderer.Renderer
+import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.implementation.CompoundButtonAttributesRenderer
 import com.coderusk.dynalibs.rendering.renderer.attribute_renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.field_renderer.interfaces.*
 import com.coderusk.dynalibs.rendering.renderer.layout_param_renderer.interfaces.LayoutParamRenderer
@@ -14,6 +15,11 @@ import com.coderusk.dynalibs.rendering.renderer.others.implementations.ChildrenC
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 interface Factory {
+    val compoundButtonAttributesRenderer: CompoundButtonAttributesRenderer
+    val radioButtonAttributesRenderer: RadioButtonAttributesRenderer
+    val svgImageViewRenderer: SVGImageViewAttributesRenderer
+    val colorParser: ColorParser
+    val blurMaskFilterParser: BlurMaskFilterParser
     val globalsRenderer: GlobalsRenderer
     val imageViewRenderer: ImageViewRenderer
     val lottieAnimationViewRenderer: LottieAnimationRenderer

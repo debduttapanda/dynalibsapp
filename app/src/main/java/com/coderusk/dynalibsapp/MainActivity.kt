@@ -74,6 +74,14 @@ class MainActivity : AppCompatActivity() {
         ).result.logd(tag)
         scripting.evaluateForResult("Math.PI").result.logd(tag)
         scripting.terminate()
+
+        /*var duktapeJs = DuktapeJs()
+        var er = duktapeJs.evaluate(R.raw.chroma.rawString(this))
+        er = duktapeJs.evaluate("chroma('green').alpha(0.5);")
+        if(er is String)
+        {
+            er.logd("chroma_debug")
+        }*/
         var layout = R.raw.layout.rawString(this).toJsonObject()
         if(layout!=null)
         {
@@ -82,5 +90,9 @@ class MainActivity : AppCompatActivity() {
             renderer.renderGlobals()
             cp.addToParentDirectly(cl_root)
         }
+        /*var rb_button = findViewById<RadioButton>(R.id.rb_button)
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            rb_button.buttonTintList= ColorStateList.valueOf(Color.RED)
+        }*/
     }
 }

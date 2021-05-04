@@ -23,6 +23,16 @@ import com.coderusk.dynalibs.rendering.renderer.others.implementations.*
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.*
 
 class FactoryImpl: Factory {
+    override val compoundButtonAttributesRenderer: CompoundButtonAttributesRenderer
+        get() = CompoundButtonAttributesRendererImpl
+    override val radioButtonAttributesRenderer: RadioButtonAttributesRenderer
+        get() = RadioButtonAttributesRendererImpl
+    override val svgImageViewRenderer: SVGImageViewAttributesRenderer
+        get() = SVGImageViewAttributesRendererImpl
+    override val colorParser: ColorParser
+        get() = ColorParserImpl
+    override val blurMaskFilterParser: BlurMaskFilterParser
+        get() = BlurMaskFilterParserImpl
     override val globalsRenderer: GlobalsRenderer
         get() = GlobalsRendererImpl
     override val imageViewRenderer: ImageViewRenderer
