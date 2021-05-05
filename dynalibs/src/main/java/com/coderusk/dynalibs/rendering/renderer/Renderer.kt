@@ -6,10 +6,10 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
 import com.coderusk.dynalibs.SPR
+import com.coderusk.dynalibs.dyna.AndroidScripting
 import com.coderusk.dynalibs.rendering.F
 import com.coderusk.dynalibs.rendering.factory.Factory
 import com.coderusk.dynalibs.rendering.renderer.others.interfaces.ChildrenComposer
-import com.coderusk.dynalibs.scripting.AndroidScripting
 import org.json.JSONObject
 
 class Renderer(private var context: Activity, var json: JSONObject, var scripting: AndroidScripting, var factory: Factory)

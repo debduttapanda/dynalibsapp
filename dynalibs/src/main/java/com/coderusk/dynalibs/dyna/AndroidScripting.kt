@@ -1,4 +1,6 @@
-package com.coderusk.dynalibs.scripting
+package com.coderusk.dynalibs.dyna
+
+import com.coderusk.dynalibs.scripting.EvaluationResult
 
 interface AndroidScripting {
     fun updateJsApi(script: String)

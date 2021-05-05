@@ -1,10 +1,5 @@
 package com.coderusk.dynalibs.scripting
 
-import android.content.Context
-import androidx.lifecycle.LifecycleOwner
-import com.coderusk.dynalibs.scripting.DuktapeJs
-import java.lang.Exception
-
 class Scripting() {
     val DATA_TYPE_IS_NOT_STRING = "Data type is not string"
     private var loadCount = 0
@@ -26,8 +21,8 @@ class Scripting() {
             duktapeJs.close()
             duktapeJs = DuktapeJs()
         }
-        duktapeJs.evaluate(script)
-        duktapeJs.evaluate(jsApiScript)
+        var er1 = duktapeJs.evaluate(script)
+        var er2 = duktapeJs.evaluate(jsApiScript)
         return duktapeJs.get(interfaceClass)
     }
 

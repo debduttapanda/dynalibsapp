@@ -1,11 +1,14 @@
-package com.coderusk.dynalibs.scripting
+package com.coderusk.dynalibs.dyna
+
+import com.coderusk.dynalibs.scripting.EvaluationResult
+import com.coderusk.dynalibs.scripting.Scripting
 
 class AndroidScriptingImpl(hostApi: HostApi): AndroidScripting {
     private var terminated = false
     private var scripting: Scripting = Scripting()
     private var jsApi: JSApi? = null
     init {
-        scripting.setHost("Host",HostApi::class.java,hostApi)
+        scripting.setHost("Host", HostApi::class.java,hostApi)
     }
 
     override fun updateJsApi(script: String)

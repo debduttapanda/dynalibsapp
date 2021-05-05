@@ -8,9 +8,7 @@ import android.widget.Toast
 import com.coderusk.dynalibs.rendering.paramrendering.xpr.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import java.io.InputStream
+import java.io.*
 
 
 fun String.logd(tag: String)
@@ -103,34 +101,34 @@ fun getScreenHeight(): Int
         .heightPixels
 }
 
-fun JSONObject.BPR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.BPR(param: String, action: ((Any) -> Unit)?)
 {
-    BPR.create(param,action).execute(this)
+    BPR.create(param, action).execute(this)
 }
 
-fun JSONObject.SPR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.SPR(param: String, action: ((Any) -> Unit)?)
 {
-    SPR.create(param,action).execute(this)
+    SPR.create(param, action).execute(this)
 }
 
-fun JSONObject.OPR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.OPR(param: String, action: ((Any) -> Unit)?)
 {
-    OPR.create(param,action).execute(this)
+    OPR.create(param, action).execute(this)
 }
 
-fun JSONObject.APR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.APR(param: String, action: ((Any) -> Unit)?)
 {
-    APR.create(param,action).execute(this)
+    APR.create(param, action).execute(this)
 }
 
-fun JSONObject.FPR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.FPR(param: String, action: ((Any) -> Unit)?)
 {
-    FPR.create(param,action).execute(this)
+    FPR.create(param, action).execute(this)
 }
 
-fun JSONObject.IPR(param: String, action: ((Any)->Unit)?)
+fun JSONObject.IPR(param: String, action: ((Any) -> Unit)?)
 {
-    IPR.create(param,action).execute(this)
+    IPR.create(param, action).execute(this)
 }
 
 fun JSONObject.sGetBoolean(key: String, callback: (Boolean) -> Unit)
@@ -321,3 +319,33 @@ fun List<String>.toFloatArray():FloatArray
     return arr
 }
 
+@Throws(java.lang.Exception::class)
+fun convertStreamToString(`is`: InputStream?): String {
+    val reader = BufferedReader(InputStreamReader(`is`))
+    val sb = StringBuilder()
+    var line: String? = null
+    while (reader.readLine().also { line = it } != null) {
+        sb.append(line).append("\n")
+    }
+    reader.close()
+    return sb.toString()
+}
+
+@Throws(java.lang.Exception::class)
+fun getStringFromFile(filePath: String?): String? {
+    val fl = File(filePath)
+    val fin = FileInputStream(fl)
+    val ret = convertStreamToString(fin)
+    //Make sure you close all streams.
+    fin.close()
+    return ret
+}
+
+fun String.fileString(): String
+{
+    try {
+        return getStringFromFile(this)!!
+    } catch (e: Exception) {
+    }
+    return ""
+}

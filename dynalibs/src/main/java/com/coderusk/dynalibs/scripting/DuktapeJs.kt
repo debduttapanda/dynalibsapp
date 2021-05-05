@@ -22,18 +22,20 @@ class DuktapeJs() {
         duktape = null
     }
 
-    fun evaluate(script: String): Any
+    fun evaluate(script: String): Any?
     {
         if(duktape==null)
         {
             create()
         }
         duktape?.let {
-            return try {
-                it.evaluate(script)
+            var ret: Any? = null
+            try {
+                ret = it.evaluate(script)
             } catch (e: Exception) {
-                e
+                ret = e
             }
+            return ret
         }
         return java.lang.Exception(DUKTAPE_IS_NULL_EXCEPTION)
     }

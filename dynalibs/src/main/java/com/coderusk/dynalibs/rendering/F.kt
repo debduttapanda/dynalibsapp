@@ -1,6 +1,8 @@
 package com.coderusk.dynalibs.rendering
 
 object F {
+    const val policy = "policy"
+    const val updatePolicy = "updatePolicy"
     const val column = "column"
     const val reverse = "reverse"
     const val vertical = "vertical"
